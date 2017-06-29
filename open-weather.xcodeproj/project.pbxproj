@@ -13,7 +13,8 @@
 		913D9FFE1F05304D006297F2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 913D9FFC1F05304D006297F2 /* Main.storyboard */; };
 		913DA0001F05304D006297F2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 913D9FFF1F05304D006297F2 /* Assets.xcassets */; };
 		913DA0031F05304D006297F2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 913DA0011F05304D006297F2 /* LaunchScreen.storyboard */; };
-		913DA00E1F05304D006297F2 /* open_weatherTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 913DA00D1F05304D006297F2 /* open_weatherTests.m */; };
+		91AD226B1F053ACC003FC80F /* Weather.m in Sources */ = {isa = PBXBuildFile; fileRef = 91AD226A1F053ACC003FC80F /* Weather.m */; };
+		91AD226F1F054091003FC80F /* WeatherTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 91AD226E1F054091003FC80F /* WeatherTests.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,8 +39,10 @@
 		913DA0021F05304D006297F2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		913DA0041F05304D006297F2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		913DA0091F05304D006297F2 /* open-weatherTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "open-weatherTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		913DA00D1F05304D006297F2 /* open_weatherTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = open_weatherTests.m; sourceTree = "<group>"; };
 		913DA00F1F05304D006297F2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		91AD22691F053ACC003FC80F /* Weather.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Weather.h; sourceTree = "<group>"; };
+		91AD226A1F053ACC003FC80F /* Weather.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Weather.m; sourceTree = "<group>"; };
+		91AD226E1F054091003FC80F /* WeatherTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeatherTests.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,6 +93,8 @@
 				913DA0011F05304D006297F2 /* LaunchScreen.storyboard */,
 				913DA0041F05304D006297F2 /* Info.plist */,
 				913D9FF31F05304D006297F2 /* Supporting Files */,
+				91AD22691F053ACC003FC80F /* Weather.h */,
+				91AD226A1F053ACC003FC80F /* Weather.m */,
 			);
 			path = "open-weather";
 			sourceTree = "<group>";
@@ -105,8 +110,8 @@
 		913DA00C1F05304D006297F2 /* open-weatherTests */ = {
 			isa = PBXGroup;
 			children = (
-				913DA00D1F05304D006297F2 /* open_weatherTests.m */,
 				913DA00F1F05304D006297F2 /* Info.plist */,
+				91AD226E1F054091003FC80F /* WeatherTests.m */,
 			);
 			path = "open-weatherTests";
 			sourceTree = "<group>";
@@ -218,6 +223,7 @@
 				913D9FFB1F05304D006297F2 /* ViewController.m in Sources */,
 				913D9FF81F05304D006297F2 /* AppDelegate.m in Sources */,
 				913D9FF51F05304D006297F2 /* main.m in Sources */,
+				91AD226B1F053ACC003FC80F /* Weather.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -225,7 +231,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				913DA00E1F05304D006297F2 /* open_weatherTests.m in Sources */,
+				91AD226F1F054091003FC80F /* WeatherTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

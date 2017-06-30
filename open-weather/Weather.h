@@ -16,6 +16,6 @@
 @property (nonatomic, readonly, nullable) NSNumber *windDirection;
 @property (nonatomic, readonly, nullable) NSDate *date;
 
-+ (instancetype)weatherWithData:(NSDictionary *_Nonnull)data;
++ (instancetype _Nullable )weatherWithData:(NSDictionary *_Nonnull)data;
 
 @end

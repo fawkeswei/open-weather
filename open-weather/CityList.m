@@ -42,6 +42,7 @@
 
 - (void)removeCityAtIndex:(NSUInteger)index {
     [self.cities removeObjectAtIndex:index];
+    [self saveCitiesToDisk];
 }
 
 #pragma mark - Data Persistance

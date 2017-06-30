@@ -53,16 +53,4 @@
     XCTAssertEqual(1, self.cityList.count);
 }
 
-//- (void)testCityDataPersistance {
-//    [self.cityList deleteSavedCities];
-//    XCTAssertEqual(0, self.cityList.count);
-//    
-//    [self.cityList addCity:[City cityWithName:@"Pacific" locationCoordinate:CLLocationCoordinate2DMake(18.072629, 163.7364493)]];
-//    [self.cityList addCity:[City cityWithName:@"Tokyo" locationCoordinate:CLLocationCoordinate2DMake(35.6732619, 139.5703006)]];
-//    
-//    [self.cityList saveCitiesToDisk];
-//    
-//    XCTAssertEqual(2, [[self.cityList getCitiesFromDisk] count]);
-//}
-
 @end

@@ -20,9 +20,6 @@
 - (nonnull City *)cityAtIndex:(NSUInteger)index;
 - (void)removeCityAtIndex:(NSUInteger)index;
 
-// private methods, only for unit testing
 - (void)deleteSavedCities;
-- (void)saveCitiesToDisk;
-- (nonnull NSMutableArray<City *> *)getCitiesFromDisk;
 
 @end

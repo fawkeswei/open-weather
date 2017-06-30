@@ -33,13 +33,23 @@
             completionHandler(nil, error);
         }
         else {
-            City *city = [[City alloc] init];
-            city.name = placemarks.firstObject.name;
-            city.locationCoordinate = coordinate;
-            completionHandler(city, nil);
+            NSString *name = placemarks.firstObject.name;
+            if ([name length] == 0) {
+                name = [NSString stringWithFormat:@"(%@,%@)", @(coordinate.latitude), @(coordinate.longitude)];
+            }
+            completionHandler([City cityWithName:name locationCoordinate:coordinate], nil);
         }
     }];
 }
+
++ (nonnull instancetype)cityWithName:(NSString *_Nonnull)name locationCoordinate:(CLLocationCoordinate2D)locationCoordinate {
+    City *city = [[City alloc] init];
+    city.name = name;
+    city.locationCoordinate = locationCoordinate;
+    return city;
+}
+
+#pragma mark -
 
 - (void)getCurrentWeatherWithCompletionHandler:(void (^_Nonnull)(Weather * _Nullable weather, NSError * _Nullable error))completionHandler {
     

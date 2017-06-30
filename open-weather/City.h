@@ -17,6 +17,7 @@
 @property (nonatomic, readonly, nullable) NSString *name;
 
 + (void)reverseGeocodeCoordinate:(CLLocationCoordinate2D)coordinate completionHandler:(void (^_Nonnull)(City * _Nullable city, NSError * _Nullable error))completionHandler;
++ (nonnull instancetype)cityWithName:(NSString *_Nonnull)name locationCoordinate:(CLLocationCoordinate2D)locationCoordinate;
 
 - (void)getCurrentWeatherWithCompletionHandler:(void (^_Nonnull)(Weather * _Nullable weather, NSError * _Nullable error))completionHandler;
 

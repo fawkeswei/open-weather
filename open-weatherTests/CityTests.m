@@ -45,13 +45,12 @@
 - (void)testGetCurrentWeather {
     XCTestExpectation *expectation = [self expectationWithDescription:@"get weather for city"];
     
-    CLLocationCoordinate2D coordinateOfAmsterdam = CLLocationCoordinate2DMake(52.3745291, 4.7585304);
-    [City reverseGeocodeCoordinate:coordinateOfAmsterdam completionHandler:^(City * _Nullable city, NSError * _Nullable error) {
-        [city getCurrentWeatherWithCompletionHandler:^(Weather * _Nullable weather, NSError * _Nullable error) {
-            XCTAssertNotNil(weather);
-            XCTAssertNil(error);
-            [expectation fulfill];
-        }];
+    City *city = [City cityWithName:@"Amsterdam" locationCoordinate:CLLocationCoordinate2DMake(52.3745291, 4.7585304)];
+    
+    [city getCurrentWeatherWithCompletionHandler:^(Weather * _Nullable weather, NSError * _Nullable error) {
+        XCTAssertNotNil(weather);
+        XCTAssertNil(error);
+        [expectation fulfill];
     }];
     
     [self waitForExpectations:@[expectation] timeout:20];

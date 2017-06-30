@@ -8,6 +8,7 @@
 
 #import "CityWeatherTableViewController.h"
 #import "WeatherTableViewCell.h"
+#import "Weather+ViewModel.h"
 
 typedef NS_ENUM(NSUInteger, TableViewSection) {
     TableViewSectionCurrent,
@@ -19,6 +20,7 @@ typedef NS_ENUM(NSUInteger, TableViewSection) {
 @interface CityWeatherTableViewController ()
 
 @property (nonatomic, strong) Weather *currentWeather;
+@property (nonatomic, strong) NSArray<Weather *> *forecastWeather;
 
 @end
 
@@ -48,6 +50,13 @@ typedef NS_ENUM(NSUInteger, TableViewSection) {
         [self.tableView.refreshControl endRefreshing];
         [self.tableView reloadData];
     }];
+    
+    [self.city getForecastWeatherWithCompletionHandler:^(NSArray<Weather *> * _Nullable weatherArray, NSError * _Nullable error) {
+        self.forecastWeather = weatherArray;
+        
+        [self.tableView.refreshControl endRefreshing];
+        [self.tableView reloadData];
+    }];
 }
 
 #pragma mark - Table view data source
@@ -61,28 +70,44 @@ typedef NS_ENUM(NSUInteger, TableViewSection) {
         return 1;
     }
     else if (section == TableViewSectionForcast) {
-        return 0; // not implemented yet
+        return self.forecastWeather.count;
     }
     else {
         return 0;
     }
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (indexPath.section == TableViewSectionCurrent) {
-        WeatherTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"WeatherTableViewCellIdentifier" forIndexPath:indexPath];
-        cell.temperatureLabel.text = self.currentWeather.temperature.stringValue;
-        cell.humidityLabel.text = self.currentWeather.humidity.stringValue;
-        cell.windSpeedLabel.text = self.currentWeather.windSpeed.stringValue;
-        cell.windDirectionLabel.text = self.currentWeather.windDirection.stringValue;
-        return cell;
+- (nullable NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+    if (section == TableViewSectionCurrent) {
+        return @"Current Weather";
     }
-    else if (indexPath.section == TableViewSectionForcast) {
-        return nil; // not implemented yet
+    else if (section == TableViewSectionForcast) {
+        return @"Forecast Weather";
     }
     else {
         return nil;
     }
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    Weather *weather = nil;
+    if (indexPath.section == TableViewSectionCurrent) {
+        weather = self.currentWeather;
+    }
+    else if (indexPath.section == TableViewSectionForcast) {
+        weather = self.forecastWeather[indexPath.row];
+    }
+    else {
+        NSAssert(nil, @"unknown section");
+    }
+    
+    WeatherTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"WeatherTableViewCellIdentifier" forIndexPath:indexPath];
+    cell.dateLabel.text = weather.stringFromDate;
+    cell.temperatureLabel.text = weather.stringFromTemperature;
+    cell.humidityLabel.text = weather.stringFromHumidity;
+    cell.windSpeedLabel.text = weather.stringFromWindSpeed;
+    cell.windDirectionLabel.text = weather.stringFromWindDirection;
+    return cell;
 }
 
 

@@ -23,14 +23,13 @@
     dispatch_once(&once, ^{
         sharedInstance = [[CityList alloc] init];
         sharedInstance.cities = [sharedInstance getCitiesFromDisk];
-        
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(saveCitiesToDisk) name:UIApplicationWillTerminateNotification object:nil];
     });
     return sharedInstance;
 }
 
 - (void)addCity:(City * _Nonnull)city {
     [self.cities addObject:city];
+    [self saveCitiesToDisk];
 }
 
 #pragma mark - Data Persistance
@@ -76,6 +75,7 @@
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         [self.cities removeObjectAtIndex:indexPath.row];
+        [self saveCitiesToDisk];
         [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
     }
 }

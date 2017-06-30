@@ -31,9 +31,9 @@ typedef NS_ENUM(NSUInteger, TableViewSection) {
     
     self.title = self.city.name;
     
-    self.tableView.refreshControl = [[UIRefreshControl alloc] init];
-    [self.tableView.refreshControl addTarget:self action:@selector(loadData) forControlEvents:UIControlEventValueChanged];
-    [self.tableView.refreshControl sendActionsForControlEvents:UIControlEventValueChanged];
+    self.refreshControl = [[UIRefreshControl alloc] init];
+    [self.refreshControl addTarget:self action:@selector(loadData) forControlEvents:UIControlEventValueChanged];
+    [self.refreshControl sendActionsForControlEvents:UIControlEventValueChanged];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -51,7 +51,7 @@ typedef NS_ENUM(NSUInteger, TableViewSection) {
         else {
             self.currentWeather = weather;
             
-            [self.tableView.refreshControl endRefreshing];
+            [self.refreshControl endRefreshing];
             [self.tableView reloadData];
         }
     }];
@@ -63,7 +63,7 @@ typedef NS_ENUM(NSUInteger, TableViewSection) {
         else {
             self.forecastWeather = weatherArray;
             
-            [self.tableView.refreshControl endRefreshing];
+            [self.refreshControl endRefreshing];
             [self.tableView reloadData];
         }
     }];

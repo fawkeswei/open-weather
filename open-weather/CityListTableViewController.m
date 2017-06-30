@@ -7,6 +7,7 @@
 //
 
 #import "CityListTableViewController.h"
+#import "AddCityViewController.h"
 
 #import "CityList.h"
 
@@ -31,6 +32,18 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (IBAction)addCity:(UIStoryboardSegue *)segue {
+    if ([segue.sourceViewController isKindOfClass:[AddCityViewController class]] && [self.tableView.dataSource isKindOfClass:[CityList class]]) {
+        AddCityViewController *addCityViewController = (AddCityViewController *)segue.sourceViewController;
+        CityList *cityList = (CityList *)self.tableView.dataSource;
+        
+        if (addCityViewController.selectedCity) {
+            [cityList addCity:addCityViewController.selectedCity];
+            [self.tableView reloadData];
+        }
+    }
 }
 
 /*

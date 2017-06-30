@@ -9,6 +9,76 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--Navigation Controller-->
+        <scene sceneID="YJg-TB-u43">
+            <objects>
+                <navigationController id="eOJ-lo-KJX" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="vNd-3F-k0o">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="WR8-Ne-yBE" kind="relationship" relationship="rootViewController" id="TIl-W4-gCR"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="f6b-db-NE1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="353" y="-657"/>
+        </scene>
+        <!--Tap on Map to Select City-->
+        <scene sceneID="OFA-6m-vqc">
+            <objects>
+                <viewController id="WR8-Ne-yBE" customClass="AddCityViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="2hv-pq-8wS"/>
+                        <viewControllerLayoutGuide type="bottom" id="XEx-pW-hcB"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="gOj-3k-qi3">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="huD-ld-JD3">
+                                <rect key="frame" x="0.0" y="623" width="375" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="rCe-Is-e1a"/>
+                                </constraints>
+                                <state key="normal" title="Tap on Map to Select City"/>
+                                <connections>
+                                    <segue destination="SkP-xb-aRJ" kind="unwind" unwindAction="addCity:" id="gnf-Sx-3Jk"/>
+                                </connections>
+                            </button>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" pitchEnabled="NO" showsBuildings="NO" showsScale="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gIY-Zt-JSC">
+                                <rect key="frame" x="0.0" y="64" width="375" height="559"/>
+                            </mapView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="XEx-pW-hcB" firstAttribute="top" secondItem="huD-ld-JD3" secondAttribute="bottom" id="OUd-i4-tl6"/>
+                            <constraint firstItem="huD-ld-JD3" firstAttribute="top" secondItem="gIY-Zt-JSC" secondAttribute="bottom" id="c53-9z-jfK"/>
+                            <constraint firstItem="gIY-Zt-JSC" firstAttribute="top" secondItem="2hv-pq-8wS" secondAttribute="bottom" id="dNa-4j-Eou"/>
+                            <constraint firstItem="huD-ld-JD3" firstAttribute="leading" secondItem="gOj-3k-qi3" secondAttribute="leading" id="jh8-qG-bNJ"/>
+                            <constraint firstAttribute="trailing" secondItem="huD-ld-JD3" secondAttribute="trailing" id="mBa-0a-JAx"/>
+                            <constraint firstAttribute="trailing" secondItem="gIY-Zt-JSC" secondAttribute="trailing" id="nF5-KL-Qcx"/>
+                            <constraint firstItem="gIY-Zt-JSC" firstAttribute="leading" secondItem="gOj-3k-qi3" secondAttribute="leading" id="qmu-Od-lur"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Tap on Map to Select City" id="n1y-s7-STK">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="u5I-sf-b7o">
+                            <connections>
+                                <action selector="dismissAddCityViewController:" destination="WR8-Ne-yBE" id="b3b-wz-AAo"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="addCityButton" destination="huD-ld-JD3" id="wOT-pS-cyU"/>
+                        <outlet property="mapView" destination="gIY-Zt-JSC" id="1mk-Bg-GMX"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="nID-2y-1Gz" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="SkP-xb-aRJ" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="1198" y="-657"/>
+        </scene>
         <!--Open Weather-->
         <scene sceneID="Sjx-Id-VaP">
             <objects>
@@ -44,7 +114,13 @@
                             <outlet property="delegate" destination="o34-kh-0Se" id="ZUP-Gd-01g"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Open Weather" id="qdN-r5-9Dj"/>
+                    <navigationItem key="navigationItem" title="Open Weather" id="qdN-r5-9Dj">
+                        <barButtonItem key="leftBarButtonItem" systemItem="add" id="8Wf-sI-25w">
+                            <connections>
+                                <segue destination="eOJ-lo-KJX" kind="presentation" id="D2c-rF-yKU"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Iog-BD-lec" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

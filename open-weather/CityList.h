@@ -17,4 +17,10 @@
 
 - (void)addCity:(City * _Nonnull)city;
 
+
+// private methods, only for unit testing
+- (void)deleteSavedCities;
+- (void)saveCitiesToDisk;
+- (nonnull NSMutableArray<City *> *)getCitiesFromDisk;
+
 @end

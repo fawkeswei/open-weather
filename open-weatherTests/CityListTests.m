@@ -25,6 +25,8 @@
     
     self.cityList = [CityList cityList];
     
+    [self.cityList deleteSavedCities];
+    
     [self.cityList addCity:[City cityWithName:@"Amsterdam" locationCoordinate:CLLocationCoordinate2DMake(52.3745291, 4.7585304)]];
     [self.cityList addCity:[City cityWithName:@"Taipei" locationCoordinate:CLLocationCoordinate2DMake(23.5821073, 118.7761817)]];
 }
@@ -50,6 +52,18 @@
     [self.cityList tableView:[[UITableView alloc] init] commitEditingStyle:UITableViewCellEditingStyleDelete forRowAtIndexPath:indexPathToDelete];
     
     XCTAssertEqual(1, [self.cityList tableView:[[UITableView alloc] init] numberOfRowsInSection:0]);
+}
+
+- (void)testCityDataPersistance {
+    [self.cityList deleteSavedCities];
+    XCTAssertEqual(0, [self.cityList tableView:[[UITableView alloc] init] numberOfRowsInSection:0]);
+    
+    [self.cityList addCity:[City cityWithName:@"Pacific" locationCoordinate:CLLocationCoordinate2DMake(18.072629, 163.7364493)]];
+    [self.cityList addCity:[City cityWithName:@"Tokyo" locationCoordinate:CLLocationCoordinate2DMake(35.6732619, 139.5703006)]];
+    
+    [self.cityList saveCitiesToDisk];
+    
+    XCTAssertEqual(2, [[self.cityList getCitiesFromDisk] count]);
 }
 
 @end

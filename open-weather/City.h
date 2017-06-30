@@ -11,7 +11,7 @@
 
 #import "Weather.h"
 
-@interface City : NSObject
+@interface City : NSObject <NSCoding>
 
 @property (nonatomic, readonly) CLLocationCoordinate2D locationCoordinate;
 @property (nonatomic, readonly, nullable) NSString *name;

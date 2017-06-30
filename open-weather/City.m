@@ -95,4 +95,23 @@
     [task resume];
 }
 
+#pragma mark - NSCoding
+
+- (id)initWithCoder:(NSCoder *)decoder {
+    self = [super init];
+    if (self) {
+        CLLocationDegrees latitude = [decoder decodeDoubleForKey:@"latitude"];
+        CLLocationDegrees longitude = [decoder decodeDoubleForKey:@"longitude"];
+        self.locationCoordinate = CLLocationCoordinate2DMake(latitude, longitude);
+        self.name = [decoder decodeObjectForKey:NSStringFromSelector(@selector(name))];
+    }
+    return self;
+}
+
+- (void)encodeWithCoder:(NSCoder *)encoder {
+    [encoder encodeDouble:self.locationCoordinate.latitude forKey:@"latitude"];
+    [encoder encodeDouble:self.locationCoordinate.longitude forKey:@"longitude"];
+    [encoder encodeObject:self.name forKey:NSStringFromSelector(@selector(name))];
+}
+
 @end

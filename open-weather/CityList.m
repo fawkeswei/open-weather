@@ -18,13 +18,47 @@
 @implementation CityList
 
 + (nonnull instancetype)cityList {
-    CityList *cityList = [[CityList alloc] init];
-    cityList.cities = [NSMutableArray array];
-    return cityList;
+    static dispatch_once_t once;
+    static CityList *sharedInstance;
+    dispatch_once(&once, ^{
+        sharedInstance = [[CityList alloc] init];
+        sharedInstance.cities = [sharedInstance getCitiesFromDisk];
+        
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(saveCitiesToDisk) name:UIApplicationWillTerminateNotification object:nil];
+    });
+    return sharedInstance;
 }
 
 - (void)addCity:(City * _Nonnull)city {
     [self.cities addObject:city];
+}
+
+#pragma mark - Data Persistance
+
+- (void)deleteSavedCities {
+    self.cities = [NSMutableArray array];
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:NSStringFromSelector(@selector(cities))];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+}
+
+- (nonnull NSMutableArray<City *> *)getCitiesFromDisk {
+    NSMutableArray *cities = nil;
+    
+    NSData *data = [[NSUserDefaults standardUserDefaults] objectForKey:NSStringFromSelector(@selector(cities))];
+    if ([data length] != 0) {
+        cities = [NSKeyedUnarchiver unarchiveObjectWithData:data];
+    }
+    
+    if (!cities) {
+        cities = [NSMutableArray array];
+    }
+    return cities;
+}
+
+- (void)saveCitiesToDisk {
+    NSData *data = [NSKeyedArchiver archivedDataWithRootObject:self.cities];
+    [[NSUserDefaults standardUserDefaults] setObject:data forKey:NSStringFromSelector(@selector(cities))];
+    [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
 #pragma mark - UITableViewDataSource

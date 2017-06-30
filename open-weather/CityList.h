@@ -11,12 +11,14 @@
 
 #import "City.h"
 
-@interface CityList : NSObject <UITableViewDataSource>
+@interface CityList : NSObject
 
 + (nonnull instancetype)cityList;
 
 - (void)addCity:(City * _Nonnull)city;
-
+- (NSUInteger)count;
+- (nonnull City *)cityAtIndex:(NSUInteger)index;
+- (void)removeCityAtIndex:(NSUInteger)index;
 
 // private methods, only for unit testing
 - (void)deleteSavedCities;

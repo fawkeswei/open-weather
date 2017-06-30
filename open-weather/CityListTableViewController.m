@@ -8,10 +8,13 @@
 
 #import "CityListTableViewController.h"
 #import "AddCityViewController.h"
+#import "CityWeatherTableViewController.h"
 
 #import "CityList.h"
 
 @interface CityListTableViewController ()
+
+@property (nonatomic, strong) CityList *cityList;
 
 @end
 
@@ -19,14 +22,10 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+
+    self.navigationItem.rightBarButtonItem = self.editButtonItem;
     
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
-    
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-     self.navigationItem.rightBarButtonItem = self.editButtonItem;
-    
-    self.tableView.dataSource = [CityList cityList];
+    self.cityList = [CityList cityList];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -35,25 +34,47 @@
 }
 
 - (IBAction)addCity:(UIStoryboardSegue *)segue {
-    if ([segue.sourceViewController isKindOfClass:[AddCityViewController class]] && [self.tableView.dataSource isKindOfClass:[CityList class]]) {
+    if ([segue.sourceViewController isKindOfClass:[AddCityViewController class]]) {
         AddCityViewController *addCityViewController = (AddCityViewController *)segue.sourceViewController;
-        CityList *cityList = (CityList *)self.tableView.dataSource;
         
         if (addCityViewController.selectedCity) {
-            [cityList addCity:addCityViewController.selectedCity];
+            [self.cityList addCity:addCityViewController.selectedCity];
             [self.tableView reloadData];
         }
     }
 }
 
-/*
+#pragma mark - UITableViewDataSource
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return [self.cityList count];
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"CityTableViewCellIdentifier"];
+    cell.textLabel.text = [self.cityList cityAtIndex:indexPath.row].name;
+    return cell;
+}
+
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        [self.cityList removeCityAtIndex:indexPath.row];
+        [self.cityList saveCitiesToDisk];
+        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+    }
+}
+
 #pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    if ([segue.destinationViewController isKindOfClass:[CityWeatherTableViewController class]] && [sender isKindOfClass:[UITableViewCell class]]) {
+        UITableViewCell *selectedCell = (UITableViewCell *)sender;
+        NSIndexPath *selectedIndexPath = [self.tableView indexPathForCell:selectedCell];
+        City *selectedCity = [self.cityList cityAtIndex:selectedIndexPath.row];
+        
+        CityWeatherTableViewController *cityWeatherTableViewController = (CityWeatherTableViewController *)segue.destinationViewController;
+        cityWeatherTableViewController.city = selectedCity;
+    }
 }
-*/
 
 @end

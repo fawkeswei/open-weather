@@ -8,6 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
+#import "City.h"
+
 @interface CityWeatherTableViewController : UITableViewController
+
+@property (nonatomic, strong) City *city;
 
 @end

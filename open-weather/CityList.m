@@ -32,6 +32,18 @@
     [self saveCitiesToDisk];
 }
 
+- (NSUInteger)count {
+    return self.cities.count;
+}
+
+- (nonnull City *)cityAtIndex:(NSUInteger)index {
+    return self.cities[index];
+}
+
+- (void)removeCityAtIndex:(NSUInteger)index {
+    [self.cities removeObjectAtIndex:index];
+}
+
 #pragma mark - Data Persistance
 
 - (void)deleteSavedCities {
@@ -58,26 +70,6 @@
     NSData *data = [NSKeyedArchiver archivedDataWithRootObject:self.cities];
     [[NSUserDefaults standardUserDefaults] setObject:data forKey:NSStringFromSelector(@selector(cities))];
     [[NSUserDefaults standardUserDefaults] synchronize];
-}
-
-#pragma mark - UITableViewDataSource
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return [self.cities count];
-}
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"CityTableViewCellIdentifier"];
-    cell.textLabel.text = self.cities[indexPath.row].name;
-    return cell;
-}
-
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        [self.cities removeObjectAtIndex:indexPath.row];
-        [self saveCitiesToDisk];
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    }
 }
 
 @end

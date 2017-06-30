@@ -7,8 +7,18 @@
 //
 
 #import "CityWeatherTableViewController.h"
+#import "WeatherTableViewCell.h"
+
+typedef NS_ENUM(NSUInteger, TableViewSection) {
+    TableViewSectionCurrent,
+    TableViewSectionForcast,
+    
+    TableViewSection_Count,
+};
 
 @interface CityWeatherTableViewController ()
+
+@property (nonatomic, strong) Weather *currentWeather;
 
 @end
 
@@ -17,11 +27,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
+    self.title = self.city.name;
     
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    self.tableView.refreshControl = [[UIRefreshControl alloc] init];
+    [self.tableView.refreshControl addTarget:self action:@selector(loadData) forControlEvents:UIControlEventValueChanged];
+    [self.tableView.refreshControl sendActionsForControlEvents:UIControlEventValueChanged];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -29,61 +39,52 @@
     // Dispose of any resources that can be recreated.
 }
 
+#pragma mark - Load data
+
+- (void)loadData {
+    [self.city getCurrentWeatherWithCompletionHandler:^(Weather * _Nullable weather, NSError * _Nullable error) {
+        self.currentWeather = weather;
+        
+        [self.tableView.refreshControl endRefreshing];
+        [self.tableView reloadData];
+    }];
+}
+
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-#warning Incomplete implementation, return the number of sections
-    return 0;
+    return TableViewSection_Count;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-#warning Incomplete implementation, return the number of rows
-    return 0;
+    if (section == TableViewSectionCurrent) {
+        return 1;
+    }
+    else if (section == TableViewSectionForcast) {
+        return 0; // not implemented yet
+    }
+    else {
+        return 0;
+    }
 }
 
-/*
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
-    
-    // Configure the cell...
-    
-    return cell;
+    if (indexPath.section == TableViewSectionCurrent) {
+        WeatherTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"WeatherTableViewCellIdentifier" forIndexPath:indexPath];
+        cell.temperatureLabel.text = self.currentWeather.temperature.stringValue;
+        cell.humidityLabel.text = self.currentWeather.humidity.stringValue;
+        cell.windSpeedLabel.text = self.currentWeather.windSpeed.stringValue;
+        cell.windDirectionLabel.text = self.currentWeather.windDirection.stringValue;
+        return cell;
+    }
+    else if (indexPath.section == TableViewSectionForcast) {
+        return nil; // not implemented yet
+    }
+    else {
+        return nil;
+    }
 }
-*/
 
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
-
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
 
 /*
 #pragma mark - Navigation

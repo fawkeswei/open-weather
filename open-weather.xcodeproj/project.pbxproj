@@ -22,6 +22,7 @@
 		91BC96A31F0631DA0040B2ED /* CityWeatherTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 91BC96A21F0631DA0040B2ED /* CityWeatherTableViewController.m */; };
 		91BC96A61F06355F0040B2ED /* AddCityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 91BC96A51F06355F0040B2ED /* AddCityViewController.m */; };
 		91BC96A91F0635AC0040B2ED /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 91BC96A81F0635AC0040B2ED /* MapKit.framework */; };
+		91BC96AC1F0643EE0040B2ED /* WeatherTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 91BC96AB1F0643EE0040B2ED /* WeatherTableViewCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +62,8 @@
 		91BC96A41F06355F0040B2ED /* AddCityViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddCityViewController.h; sourceTree = "<group>"; };
 		91BC96A51F06355F0040B2ED /* AddCityViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddCityViewController.m; sourceTree = "<group>"; };
 		91BC96A81F0635AC0040B2ED /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		91BC96AA1F0643EE0040B2ED /* WeatherTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeatherTableViewCell.h; sourceTree = "<group>"; };
+		91BC96AB1F0643EE0040B2ED /* WeatherTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeatherTableViewCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,6 +113,8 @@
 				91BC969F1F0631730040B2ED /* CityListTableViewController.m */,
 				91BC96A11F0631DA0040B2ED /* CityWeatherTableViewController.h */,
 				91BC96A21F0631DA0040B2ED /* CityWeatherTableViewController.m */,
+				91BC96AA1F0643EE0040B2ED /* WeatherTableViewCell.h */,
+				91BC96AB1F0643EE0040B2ED /* WeatherTableViewCell.m */,
 				91BC96A41F06355F0040B2ED /* AddCityViewController.h */,
 				91BC96A51F06355F0040B2ED /* AddCityViewController.m */,
 				913D9FFC1F05304D006297F2 /* Main.storyboard */,
@@ -260,6 +265,7 @@
 			files = (
 				913D9FF81F05304D006297F2 /* AppDelegate.m in Sources */,
 				91BC96981F060F180040B2ED /* CityList.m in Sources */,
+				91BC96AC1F0643EE0040B2ED /* WeatherTableViewCell.m in Sources */,
 				913DA01E1F05328C006297F2 /* City.m in Sources */,
 				91BC96A61F06355F0040B2ED /* AddCityViewController.m in Sources */,
 				913D9FF51F05304D006297F2 /* main.m in Sources */,

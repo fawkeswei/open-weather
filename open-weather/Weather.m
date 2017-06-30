@@ -14,12 +14,13 @@
 @property (nonatomic, strong) NSNumber *humidity;
 @property (nonatomic, strong) NSNumber *windSpeed;
 @property (nonatomic, strong) NSNumber *windDirection;
+@property (nonatomic, strong) NSDate *date;
 
 @end
 
 @implementation Weather
 
-+ (instancetype)weatherWithData:(NSDictionary *)data {
++ (instancetype)weatherWithData:(NSDictionary *_Nonnull)data {
     // if the most important data is missing, don't create a weather
     if (!data[@"main"][@"temp"]) {
         return nil;
@@ -30,6 +31,7 @@
     weather.humidity = data[@"main"][@"humidity"];
     weather.windSpeed = data[@"wind"][@"speed"];
     weather.windDirection = data[@"wind"][@"deg"];
+    weather.date = [NSDate dateWithTimeIntervalSince1970:[data[@"dt"] doubleValue]];
     
     return weather;
 }

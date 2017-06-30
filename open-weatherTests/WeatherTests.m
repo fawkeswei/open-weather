@@ -35,7 +35,8 @@
                            @"wind": @{
                                    @"speed": @5.46,
                                    @"deg": @65.5,
-                                   }
+                                   },
+                           @"dt": @1498834800,
                            };
     
     Weather *weather = [Weather weatherWithData:data];
@@ -44,6 +45,7 @@
     XCTAssertEqualObjects(@99, weather.humidity);
     XCTAssertEqualObjects(@5.46, weather.windSpeed);
     XCTAssertEqualObjects(@65.5, weather.windDirection);
+    XCTAssertNotNil(weather.date);
     
     XCTAssertNil([Weather weatherWithData:@{}]);
 }

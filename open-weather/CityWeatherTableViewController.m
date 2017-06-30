@@ -45,18 +45,43 @@ typedef NS_ENUM(NSUInteger, TableViewSection) {
 
 - (void)loadData {
     [self.city getCurrentWeatherWithCompletionHandler:^(Weather * _Nullable weather, NSError * _Nullable error) {
-        self.currentWeather = weather;
-        
-        [self.tableView.refreshControl endRefreshing];
-        [self.tableView reloadData];
+        if (error) {
+            [self showError:error];
+        }
+        else {
+            self.currentWeather = weather;
+            
+            [self.tableView.refreshControl endRefreshing];
+            [self.tableView reloadData];
+        }
     }];
     
     [self.city getForecastWeatherWithCompletionHandler:^(NSArray<Weather *> * _Nullable weatherArray, NSError * _Nullable error) {
-        self.forecastWeather = weatherArray;
-        
-        [self.tableView.refreshControl endRefreshing];
-        [self.tableView reloadData];
+        if (error) {
+            [self showError:error];
+        }
+        else {
+            self.forecastWeather = weatherArray;
+            
+            [self.tableView.refreshControl endRefreshing];
+            [self.tableView reloadData];
+        }
     }];
+}
+
+- (void)showError:(NSError *)error {
+    if (!error) {
+        return;
+    }
+    
+    UIAlertController *errorAlertController = [UIAlertController alertControllerWithTitle:@"Error" message:error.localizedDescription preferredStyle:UIAlertControllerStyleAlert];
+    [errorAlertController addAction:[UIAlertAction actionWithTitle:@"Dismiss" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+        [self.navigationController popViewControllerAnimated:YES];
+    }]];
+    [errorAlertController addAction:[UIAlertAction actionWithTitle:@"Retry" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [self loadData];
+    }]];
+    [self presentViewController:errorAlertController animated:YES completion:nil];
 }
 
 #pragma mark - Table view data source

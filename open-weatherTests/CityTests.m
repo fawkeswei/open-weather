@@ -56,4 +56,18 @@
     [self waitForExpectations:@[expectation] timeout:20];
 }
 
+- (void)testForecastCurrentWeather {
+    XCTestExpectation *expectation = [self expectationWithDescription:@"get weather for city"];
+    
+    City *city = [City cityWithName:@"Amsterdam" locationCoordinate:CLLocationCoordinate2DMake(52.3745291, 4.7585304)];
+    
+    [city getForecastWeatherWithCompletionHandler:^(NSArray<Weather *> * _Nullable weatherArray, NSError * _Nullable error) {
+        XCTAssert([weatherArray count] != 0);
+        XCTAssertNil(error);
+        [expectation fulfill];
+    }];
+    
+    [self waitForExpectations:@[expectation] timeout:20];
+}
+
 @end

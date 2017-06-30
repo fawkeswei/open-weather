@@ -20,5 +20,6 @@
 + (nonnull instancetype)cityWithName:(NSString *_Nonnull)name locationCoordinate:(CLLocationCoordinate2D)locationCoordinate;
 
 - (void)getCurrentWeatherWithCompletionHandler:(void (^_Nonnull)(Weather * _Nullable weather, NSError * _Nullable error))completionHandler;
+- (void)getForecastWeatherWithCompletionHandler:(void (^_Nonnull)(NSArray<Weather *> * _Nullable weatherArray, NSError * _Nullable error))completionHandler;
 
 @end

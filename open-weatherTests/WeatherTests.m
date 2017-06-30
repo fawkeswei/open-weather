@@ -9,6 +9,7 @@
 #import <XCTest/XCTest.h>
 
 #import "Weather.h"
+#import "Weather+ViewModel.h"
 
 @interface WeatherTests : XCTestCase
 
@@ -48,6 +49,28 @@
     XCTAssertNotNil(weather.date);
     
     XCTAssertNil([Weather weatherWithData:@{}]);
+}
+
+- (void)testWeatherViewModel {
+    NSDictionary *data = @{
+                           @"main": @{
+                                   @"temp": @30.1,
+                                   @"humidity": @50,
+                                   },
+                           @"wind": @{
+                                   @"speed": @4.20,
+                                   @"deg": @90.5,
+                                   },
+                           @"dt": @1498844800,
+                           };
+    
+    Weather *weather = [Weather weatherWithData:data];
+    XCTAssert(weather);
+    XCTAssertEqualObjects(@"30.1°C", weather.stringFromTemperature);
+    XCTAssertEqualObjects(@"50%", weather.stringFromHumidity);
+    XCTAssertEqualObjects(@"4.2 m/s", weather.stringFromWindSpeed);
+    XCTAssertEqualObjects(@"90.5", weather.stringFromWindDirection);
+    XCTAssert([weather.stringFromDate length] != 0);
 }
 
 @end

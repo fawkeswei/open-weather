@@ -24,6 +24,7 @@
 		91BC96A91F0635AC0040B2ED /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 91BC96A81F0635AC0040B2ED /* MapKit.framework */; };
 		91BC96AC1F0643EE0040B2ED /* WeatherTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 91BC96AB1F0643EE0040B2ED /* WeatherTableViewCell.m */; };
 		91BC96AF1F068C720040B2ED /* SettingsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 91BC96AE1F068C720040B2ED /* SettingsTableViewController.m */; };
+		91BC96B21F06A5BA0040B2ED /* Weather+ViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 91BC96B11F06A5BA0040B2ED /* Weather+ViewModel.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,6 +68,8 @@
 		91BC96AB1F0643EE0040B2ED /* WeatherTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeatherTableViewCell.m; sourceTree = "<group>"; };
 		91BC96AD1F068C720040B2ED /* SettingsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsTableViewController.h; sourceTree = "<group>"; };
 		91BC96AE1F068C720040B2ED /* SettingsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsTableViewController.m; sourceTree = "<group>"; };
+		91BC96B01F06A5BA0040B2ED /* Weather+ViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Weather+ViewModel.h"; sourceTree = "<group>"; };
+		91BC96B11F06A5BA0040B2ED /* Weather+ViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Weather+ViewModel.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -133,6 +136,8 @@
 				91BC96971F060F180040B2ED /* CityList.m */,
 				91AD22691F053ACC003FC80F /* Weather.h */,
 				91AD226A1F053ACC003FC80F /* Weather.m */,
+				91BC96B01F06A5BA0040B2ED /* Weather+ViewModel.h */,
+				91BC96B11F06A5BA0040B2ED /* Weather+ViewModel.m */,
 			);
 			path = "open-weather";
 			sourceTree = "<group>";
@@ -270,6 +275,7 @@
 			files = (
 				913D9FF81F05304D006297F2 /* AppDelegate.m in Sources */,
 				91BC96981F060F180040B2ED /* CityList.m in Sources */,
+				91BC96B21F06A5BA0040B2ED /* Weather+ViewModel.m in Sources */,
 				91BC96AF1F068C720040B2ED /* SettingsTableViewController.m in Sources */,
 				91BC96AC1F0643EE0040B2ED /* WeatherTableViewCell.m in Sources */,
 				913DA01E1F05328C006297F2 /* City.m in Sources */,

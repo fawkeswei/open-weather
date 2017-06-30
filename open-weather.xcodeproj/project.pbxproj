@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		913D9FF51F05304D006297F2 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 913D9FF41F05304D006297F2 /* main.m */; };
 		913D9FF81F05304D006297F2 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 913D9FF71F05304D006297F2 /* AppDelegate.m */; };
-		913D9FFB1F05304D006297F2 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 913D9FFA1F05304D006297F2 /* ViewController.m */; };
 		913D9FFE1F05304D006297F2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 913D9FFC1F05304D006297F2 /* Main.storyboard */; };
 		913DA0001F05304D006297F2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 913D9FFF1F05304D006297F2 /* Assets.xcassets */; };
 		913DA0031F05304D006297F2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 913DA0011F05304D006297F2 /* LaunchScreen.storyboard */; };
@@ -19,6 +18,8 @@
 		91AD226F1F054091003FC80F /* WeatherTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 91AD226E1F054091003FC80F /* WeatherTests.m */; };
 		91BC96981F060F180040B2ED /* CityList.m in Sources */ = {isa = PBXBuildFile; fileRef = 91BC96971F060F180040B2ED /* CityList.m */; };
 		91BC969A1F0611430040B2ED /* CityListTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 91BC96991F0611430040B2ED /* CityListTests.m */; };
+		91BC96A01F0631730040B2ED /* CityListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 91BC969F1F0631730040B2ED /* CityListTableViewController.m */; };
+		91BC96A31F0631DA0040B2ED /* CityWeatherTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 91BC96A21F0631DA0040B2ED /* CityWeatherTableViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,8 +37,6 @@
 		913D9FF41F05304D006297F2 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		913D9FF61F05304D006297F2 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		913D9FF71F05304D006297F2 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		913D9FF91F05304D006297F2 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		913D9FFA1F05304D006297F2 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		913D9FFD1F05304D006297F2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		913D9FFF1F05304D006297F2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		913DA0021F05304D006297F2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -53,6 +52,10 @@
 		91BC96961F060F180040B2ED /* CityList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CityList.h; sourceTree = "<group>"; };
 		91BC96971F060F180040B2ED /* CityList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CityList.m; sourceTree = "<group>"; };
 		91BC96991F0611430040B2ED /* CityListTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CityListTests.m; sourceTree = "<group>"; };
+		91BC969E1F0631730040B2ED /* CityListTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CityListTableViewController.h; sourceTree = "<group>"; };
+		91BC969F1F0631730040B2ED /* CityListTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CityListTableViewController.m; sourceTree = "<group>"; };
+		91BC96A11F0631DA0040B2ED /* CityWeatherTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CityWeatherTableViewController.h; sourceTree = "<group>"; };
+		91BC96A21F0631DA0040B2ED /* CityWeatherTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CityWeatherTableViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,8 +99,10 @@
 			children = (
 				913D9FF61F05304D006297F2 /* AppDelegate.h */,
 				913D9FF71F05304D006297F2 /* AppDelegate.m */,
-				913D9FF91F05304D006297F2 /* ViewController.h */,
-				913D9FFA1F05304D006297F2 /* ViewController.m */,
+				91BC969E1F0631730040B2ED /* CityListTableViewController.h */,
+				91BC969F1F0631730040B2ED /* CityListTableViewController.m */,
+				91BC96A11F0631DA0040B2ED /* CityWeatherTableViewController.h */,
+				91BC96A21F0631DA0040B2ED /* CityWeatherTableViewController.m */,
 				913D9FFC1F05304D006297F2 /* Main.storyboard */,
 				913D9FFF1F05304D006297F2 /* Assets.xcassets */,
 				913DA0011F05304D006297F2 /* LaunchScreen.storyboard */,
@@ -236,11 +241,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				913D9FFB1F05304D006297F2 /* ViewController.m in Sources */,
 				913D9FF81F05304D006297F2 /* AppDelegate.m in Sources */,
 				91BC96981F060F180040B2ED /* CityList.m in Sources */,
 				913DA01E1F05328C006297F2 /* City.m in Sources */,
 				913D9FF51F05304D006297F2 /* main.m in Sources */,
+				91BC96A01F0631730040B2ED /* CityListTableViewController.m in Sources */,
+				91BC96A31F0631DA0040B2ED /* CityWeatherTableViewController.m in Sources */,
 				91AD226B1F053ACC003FC80F /* Weather.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -22,7 +22,16 @@
     static CityList *sharedInstance;
     dispatch_once(&once, ^{
         sharedInstance = [[CityList alloc] init];
-        sharedInstance.cities = [sharedInstance getCitiesFromDisk];
+        NSMutableArray *cities = [sharedInstance getCitiesFromDisk];
+        if (!cities) {  // Nothing on disk -> load default cities
+            cities = [@[
+                        [City cityWithName:@"Amsterdam, Netherlands" locationCoordinate:CLLocationCoordinate2DMake(52.3745291, 4.7585304)],
+                        [City cityWithName:@"Taipei, Taiwan" locationCoordinate:CLLocationCoordinate2DMake(23.5821073, 118.7761817)],
+                        [City cityWithName:@"Tokyo, Japan" locationCoordinate:CLLocationCoordinate2DMake(35.6732619, 139.5703006)],
+                        ] mutableCopy];
+            [sharedInstance saveCitiesToDisk];
+        }
+        sharedInstance.cities = cities;
     });
     return sharedInstance;
 }
@@ -48,9 +57,9 @@
 #pragma mark - Data Persistance
 
 - (void)deleteSavedCities {
-    self.cities = [NSMutableArray array];
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:NSStringFromSelector(@selector(cities))];
-    [[NSUserDefaults standardUserDefaults] synchronize];
+    self.cities = [NSMutableArray array];
+    [self saveCitiesToDisk];
 }
 
 - (nonnull NSMutableArray<City *> *)getCitiesFromDisk {
@@ -59,10 +68,6 @@
     NSData *data = [[NSUserDefaults standardUserDefaults] objectForKey:NSStringFromSelector(@selector(cities))];
     if ([data length] != 0) {
         cities = [NSKeyedUnarchiver unarchiveObjectWithData:data];
-    }
-    
-    if (!cities) {
-        cities = [NSMutableArray array];
     }
     return cities;
 }

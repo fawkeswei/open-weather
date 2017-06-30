@@ -28,6 +28,7 @@
 
 + (void)reverseGeocodeCoordinate:(CLLocationCoordinate2D)coordinate completionHandler:(void (^_Nonnull)(City * _Nullable city, NSError * _Nullable error))completionHandler {
     
+    [[City geoCoder] cancelGeocode];
     [[City geoCoder] reverseGeocodeLocation:[[CLLocation alloc] initWithLatitude:coordinate.latitude longitude:coordinate.longitude] completionHandler:^(NSArray<CLPlacemark *> * _Nullable placemarks, NSError * _Nullable error) {
         if (error) {
             completionHandler(nil, error);

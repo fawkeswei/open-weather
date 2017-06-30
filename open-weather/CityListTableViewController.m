@@ -22,8 +22,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
-    self.navigationItem.rightBarButtonItem = self.editButtonItem;
     
     self.cityList = [CityList cityList];
 }

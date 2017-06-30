@@ -34,8 +34,14 @@
             completionHandler(nil, error);
         }
         else {
-            NSString *cityName = placemarks.firstObject.locality;
-            if ([cityName length] == 0) {
+            CLPlacemark *placemark = placemarks.firstObject;
+            NSString *cityName = placemark.locality;
+            if ([cityName length] != 0) {
+                if (placemark.country) {
+                    cityName = [cityName stringByAppendingFormat:@", %@", placemark.country];
+                }
+            }
+            else {
                 cityName = [NSString stringWithFormat:@"(%@,%@)", @(coordinate.latitude), @(coordinate.longitude)];
             }
             completionHandler([City cityWithName:cityName locationCoordinate:coordinate], nil);

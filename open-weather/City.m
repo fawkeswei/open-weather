@@ -72,24 +72,33 @@
     NSURLSession *session = [NSURLSession sharedSession];
     NSURLSessionDataTask *task = [session dataTaskWithURL:components.URL completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
         if (error) {
-            completionHandler(nil, error);
+            dispatch_async(dispatch_get_main_queue(), ^{
+                completionHandler(nil, error);
+            });
             return;
         }
         
         NSError *JSONSerializationError = nil;
         NSDictionary *responseData = [NSJSONSerialization JSONObjectWithData:data options:0 error:&JSONSerializationError];
         if (JSONSerializationError) {
-            completionHandler(nil, error);
+            dispatch_async(dispatch_get_main_queue(), ^{
+                completionHandler(nil, error);
+            });
             return;
         }
         
         
         Weather *weather = [Weather weatherWithData:responseData];
         if (weather) {
-            completionHandler(weather, nil);
+            dispatch_async(dispatch_get_main_queue(), ^{
+                completionHandler(weather, nil);
+            });
         }
         else {
-            completionHandler(nil, nil);// data error
+            dispatch_async(dispatch_get_main_queue(), ^{
+                completionHandler(nil, error);
+            });
+//            completionHandler(nil, nil);// data error
         }
         
     }];

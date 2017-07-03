@@ -28,6 +28,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    // remove title from back button
     self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
     
     self.cityList = [CityList cityList];

@@ -4,7 +4,6 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -115,7 +114,7 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Open Weather" id="qdN-r5-9Dj">
-                        <barButtonItem key="leftBarButtonItem" title="Setting" id="VcH-7j-sOA">
+                        <barButtonItem key="leftBarButtonItem" title="Settings" id="VcH-7j-sOA">
                             <connections>
                                 <segue destination="2zj-o5-ynx" kind="presentation" id="gNI-1u-Bwt"/>
                             </connections>

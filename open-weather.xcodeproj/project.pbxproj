@@ -115,29 +115,12 @@
 			children = (
 				913D9FF61F05304D006297F2 /* AppDelegate.h */,
 				913D9FF71F05304D006297F2 /* AppDelegate.m */,
-				91BC969E1F0631730040B2ED /* CityListTableViewController.h */,
-				91BC969F1F0631730040B2ED /* CityListTableViewController.m */,
-				91BC96A11F0631DA0040B2ED /* CityWeatherTableViewController.h */,
-				91BC96A21F0631DA0040B2ED /* CityWeatherTableViewController.m */,
-				91BC96AA1F0643EE0040B2ED /* WeatherTableViewCell.h */,
-				91BC96AB1F0643EE0040B2ED /* WeatherTableViewCell.m */,
-				91BC96A41F06355F0040B2ED /* AddCityViewController.h */,
-				91BC96A51F06355F0040B2ED /* AddCityViewController.m */,
-				91BC96AD1F068C720040B2ED /* SettingsTableViewController.h */,
-				91BC96AE1F068C720040B2ED /* SettingsTableViewController.m */,
+				91C693E41F0A3C1C00AA88B4 /* View Controllers */,
+				91C693E51F0A3C2B00AA88B4 /* Model */,
 				913D9FFC1F05304D006297F2 /* Main.storyboard */,
-				913D9FFF1F05304D006297F2 /* Assets.xcassets */,
 				913DA0011F05304D006297F2 /* LaunchScreen.storyboard */,
-				913DA0041F05304D006297F2 /* Info.plist */,
+				913D9FFF1F05304D006297F2 /* Assets.xcassets */,
 				913D9FF31F05304D006297F2 /* Supporting Files */,
-				913DA01C1F05328C006297F2 /* City.h */,
-				913DA01D1F05328C006297F2 /* City.m */,
-				91BC96961F060F180040B2ED /* CityList.h */,
-				91BC96971F060F180040B2ED /* CityList.m */,
-				91AD22691F053ACC003FC80F /* Weather.h */,
-				91AD226A1F053ACC003FC80F /* Weather.m */,
-				91BC96B01F06A5BA0040B2ED /* Weather+ViewModel.h */,
-				91BC96B11F06A5BA0040B2ED /* Weather+ViewModel.m */,
 			);
 			path = "open-weather";
 			sourceTree = "<group>";
@@ -145,6 +128,7 @@
 		913D9FF31F05304D006297F2 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				913DA0041F05304D006297F2 /* Info.plist */,
 				913D9FF41F05304D006297F2 /* main.m */,
 			);
 			name = "Supporting Files";
@@ -167,6 +151,38 @@
 				91BC96A81F0635AC0040B2ED /* MapKit.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		91C693E41F0A3C1C00AA88B4 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				91BC969E1F0631730040B2ED /* CityListTableViewController.h */,
+				91BC969F1F0631730040B2ED /* CityListTableViewController.m */,
+				91BC96A11F0631DA0040B2ED /* CityWeatherTableViewController.h */,
+				91BC96A21F0631DA0040B2ED /* CityWeatherTableViewController.m */,
+				91BC96AA1F0643EE0040B2ED /* WeatherTableViewCell.h */,
+				91BC96AB1F0643EE0040B2ED /* WeatherTableViewCell.m */,
+				91BC96A41F06355F0040B2ED /* AddCityViewController.h */,
+				91BC96A51F06355F0040B2ED /* AddCityViewController.m */,
+				91BC96AD1F068C720040B2ED /* SettingsTableViewController.h */,
+				91BC96AE1F068C720040B2ED /* SettingsTableViewController.m */,
+			);
+			name = "View Controllers";
+			sourceTree = "<group>";
+		};
+		91C693E51F0A3C2B00AA88B4 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				913DA01C1F05328C006297F2 /* City.h */,
+				913DA01D1F05328C006297F2 /* City.m */,
+				91BC96961F060F180040B2ED /* CityList.h */,
+				91BC96971F060F180040B2ED /* CityList.m */,
+				91AD22691F053ACC003FC80F /* Weather.h */,
+				91AD226A1F053ACC003FC80F /* Weather.m */,
+				91BC96B01F06A5BA0040B2ED /* Weather+ViewModel.h */,
+				91BC96B11F06A5BA0040B2ED /* Weather+ViewModel.m */,
+			);
+			name = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
